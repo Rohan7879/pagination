@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let i of data
+          | paginate : { itemsPerPage: pageSize, currentPage: currentPage };
+        let index = index
+      "
+    >
+      <th scope="row">{{ index + 1 + pageSize * (currentPage - 1) }}</th>
+      <td>{{ i.name }}</td>
+      <td>{{ i.value }}</td>
+    </tr>
+  </tbody>
+  <pagination-controls
+    (pageChange)="currentPage = $event"
+  ></pagination-controls>
+</table>
